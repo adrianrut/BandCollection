@@ -11,19 +11,15 @@
 <h1>Dodaj kapele</h1>
 <a href="/">Powrót do strony głównej</a><br><br>
 
-<form method="post" action="add_recording" th:object="${recording}">
+<form method="post" action="add_song" th:object="${song}">
     <div class="input-group">
-        <span class="input-group-text">Nazwa</span>
+        <span class="input-group-text">Ksywa</span>
         <input th:field="*{name}" type="text" aria-label="First name" class="form-control">
     </div>
-    <select th:field="*{band}" class="form-select form-select-sm" aria-label=".form-select-sm example">
-        <option th:each="band : ${band}"
-                th:value="${band.id}" th:text="${band.name}" value="1">One</option>
+    <select th:field="*{recording}" class="form-select form-select-sm" aria-label=".form-select-sm example">
+        <option th:each="recording : ${recording}"
+                th:value="${recording.id}" th:text="${recording.name}" value="1">One</option>
     </select>
-    <div class="input-group">
-        <span class="input-group-text">Rok wydania</span>
-        <input th:field="*{yearOfCreation}" type="text" aria-label="First name" class="form-control">
-    </div>
     <button type="submit" class="btn btn-dark">Dodaj</button>
 
 

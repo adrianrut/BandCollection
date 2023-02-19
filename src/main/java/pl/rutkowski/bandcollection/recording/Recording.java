@@ -1,7 +1,7 @@
 package pl.rutkowski.bandcollection.recording;
 
 import jakarta.persistence.*;
-import pl.rutkowski.bandcollection.Song;
+import pl.rutkowski.bandcollection.song.Song;
 import pl.rutkowski.bandcollection.band.Band;
 
 import java.util.List;
@@ -17,7 +17,7 @@ public class Recording {
     private String name;
     @OneToMany(mappedBy = "recording")
     private List<Song> songs;
-    private int yearOfCreation;
+    private Integer yearOfCreation;
     private boolean possession;
 
     public Band getBand() {
@@ -52,11 +52,11 @@ public class Recording {
         this.name = name;
     }
 
-    public int getYearOfCreation() {
+    public Integer getYearOfCreation() {
         return yearOfCreation;
     }
 
-    public void setYearOfCreation(int yearOfCreation) {
+    public void setYearOfCreation(Integer yearOfCreation) {
         this.yearOfCreation = yearOfCreation;
     }
 

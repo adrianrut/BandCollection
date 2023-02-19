@@ -24,7 +24,9 @@ public class MusicianController {
     @GetMapping("/musician")
     public String home(Model model) {
         List<Musician> musicianList = musicianRepository.findAll();
+        List<Band> bandList = bandRepository.findAll();
         model.addAttribute("musician", musicianList);
+        model.addAttribute("band", bandList);
         return "musician";
     }
 

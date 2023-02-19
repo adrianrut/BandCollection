@@ -14,13 +14,13 @@
 <form method="post" action="add_musician" th:object="${musician}">
     <div class="input-group">
         <span class="input-group-text">Ksywa</span>
-        <input th:name="name" type="text" aria-label="First name" class="form-control">
+        <input th:field="*{name}" type="text" aria-label="First name" class="form-control">
     </div>
-    <div class="input-group">
-        <input th:name="band" th:each="band : ${band}" th:text="${band.name}" type="text" aria-label="First name" class="form-control">
-    </div>
-    <select th:name="role" class="form-select form-select-sm" aria-label=".form-select-sm example">
-        <option selected>Instrument</option>
+    <select th:field="*{band}" class="form-select form-select-sm" aria-label=".form-select-sm example">
+        <option th:each="band : ${band}"
+                th:value="${band.id}" th:text="${band.name}" value="1">One</option>
+    </select>
+    <select th:field="*{role}" class="form-select form-select-sm" aria-label=".form-select-sm example">
         <option th:each="role : ${T(pl.rutkowski.bandcollection.Role).values()}"
                 th:value="${role}" th:text="${role}" value="1">One</option>
     </select>

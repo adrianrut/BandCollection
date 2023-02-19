@@ -1,4 +1,4 @@
-package pl.rutkowski.bandcollection;
+package pl.rutkowski.bandcollection.song;
 
 import jakarta.persistence.*;
 import pl.rutkowski.bandcollection.recording.Recording;

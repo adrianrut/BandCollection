@@ -19,8 +19,8 @@ public class Band {
     private List<Musician> musicians;
     @OneToMany(mappedBy = "band")
     private List<Recording> recordings;
-    private int yearOfCreation;
-    private int endDate;
+    private Integer yearOfCreation;
+    private Integer endDate;
     private boolean status;
 
 
@@ -48,19 +48,19 @@ public class Band {
         this.genre = genre;
     }
 
-    public int getYearOfCreation() {
+    public Integer getYearOfCreation() {
         return yearOfCreation;
     }
 
-    public void setYearOfCreation(int yearOfCreation) {
+    public void setYearOfCreation(Integer yearOfCreation) {
         this.yearOfCreation = yearOfCreation;
     }
 
-    public int getEndDate() {
+    public Integer getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(int endDate) {
+    public void setEndDate(Integer endDate) {
         this.endDate = endDate;
     }
 

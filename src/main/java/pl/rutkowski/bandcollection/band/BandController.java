@@ -40,7 +40,7 @@ public class BandController {
     @GetMapping("/{id}")
     public String band(@PathVariable Long id, Model model) {
         Band band = bandRepository.findById(id).orElseThrow();
-        model.addAttribute("band", band);
+        model.addAttribute("bands", band);
         return "band";
     }
 }

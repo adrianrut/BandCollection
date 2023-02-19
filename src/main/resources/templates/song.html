@@ -11,24 +11,19 @@
 </head>
 <body class="image">
 <div class="container">
-    <h1 th:text="${bands.name}" class="title" style="color: chartreuse"></h1>
+    <h1 th:text="${song.name}" class="title" style="color: chartreuse"></h1>
     <a href="/">Powrót do strony głównej</a><br><br>
 
     <table class="table table-dark table-striped">
         <thead>
         <tr>
-            <th scope="col">Gatunek</th>
-            <th scope="col">Skład</th>
-            <th scope="col">Dyskografia</th>
-            <th scope="col">Rok powstania</th>
+            <th scope="col">Nazwa</th>
+
         </tr>
         </thead>
         <tbody>
         <tr>
-            <td th:text="${bands.name}">Otto</td>
-            <td th:each="musician : ${bands.musicians}" th:text="${musician.name}">Otto</td>
-            <td th:text="${bands.recordings}">Otto</td>
-            <td th:text="${bands.yearOfCreation}">@mdo</td>
+            <td th:text="${song.name}">Otto</td>
         </tr>
         </tbody>
     </table>
