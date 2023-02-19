@@ -1,0 +1,16 @@
+/*.image {*/
+/*    background-image: url(https://medicaldialogues.in/h-upload/2022/10/27/189071-fire-new.webp);*/
+/*    background-repeat: no-repeat;*/
+/*    width: 10px;*/
+/*    height: 20px;*/
+/*}*/
+
+.title {
+    font-family: cursive;
+    text-align: center;
+}
+
+.container {
+    text-align: center;
+    margin-left: 400px;
+}
