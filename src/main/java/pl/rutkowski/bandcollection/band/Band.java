@@ -87,6 +87,11 @@ public class Band {
     public void setRecordings(List<Recording> recordings) {
         this.recordings = recordings;
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }
 
 

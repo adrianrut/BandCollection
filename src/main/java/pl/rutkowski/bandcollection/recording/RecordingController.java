@@ -3,7 +3,6 @@ package pl.rutkowski.bandcollection.recording;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import pl.rutkowski.bandcollection.band.Band;
 import pl.rutkowski.bandcollection.band.BandRepository;
@@ -24,7 +23,7 @@ public class RecordingController {
     @GetMapping("/recording")
     public String home(Model model) {
         List<Recording> recordingList = recordingRepository.findAll();
-        model.addAttribute("recording", recordingList);
+        model.addAttribute("recordings", recordingList);
         return "recording";
     }
 
@@ -43,10 +42,4 @@ public class RecordingController {
         return "redirect:/";
     }
 
-    @GetMapping("/recording/{id}")
-    public String band(@PathVariable Long id, Model model) {
-        Recording recording = recordingRepository.findById(id).orElseThrow();
-        model.addAttribute("recording", recording);
-        return "recording";
-    }
 }

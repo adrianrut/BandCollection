@@ -12,17 +12,19 @@
 <a href="/">Powrót do strony głównej</a><br><br>
 
 <form method="post" action="add_band" th:object="${band}">
-    <input name="name" th:placeholder="Nazwa">
-    <select th:name="genre">
+    <div class="input-group">
+        <span class="input-group-text">Nazwa</span>
+        <input th:field="*{name}" type="text" aria-label="First name" class="form-control">
+    </div>
+    <select th:field="*{genre}" class="form-select form-select-sm" aria-label=".form-select-sm example">
         <option th:each="genre : ${T(pl.rutkowski.bandcollection.Genre).values()}"
-        th:value="${genre}" th:text="${genre}"></option>
+                th:value="${genre}" th:text="${genre}" value="1">One</option>
     </select>
-    <input name="yearOfCreation" placeholder="Rok powstania">
+    <div class="input-group">
+        <span class="input-group-text">Rok założenia</span>
+        <input th:field="*{yearOfCreation}" type="text" aria-label="First name" class="form-control">
+    </div>
     <button type="submit" class="btn btn-dark">Dodaj</button>
-
-
 </form>
-
-
 </body>
 </html>

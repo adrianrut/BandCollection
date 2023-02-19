@@ -11,28 +11,24 @@
 </head>
 <body class="image">
 <div class="container">
-    <h1 th:text="${song.name}" class="title" style="color: chartreuse"></h1>
+    <h1 th:text="Kawałki" class="title" style="color: chartreuse"></h1>
     <a href="/">Powrót do strony głównej</a><br><br>
 
     <table class="table table-dark table-striped">
         <thead>
         <tr>
             <th scope="col">Nazwa</th>
-
+            <th scope="col">Płyta</th>
         </tr>
         </thead>
         <tbody>
-        <tr>
+        <tr th:each="song : ${song}">
             <td th:text="${song.name}">Otto</td>
+            <td th:text="${song.recording}">Otto</td>
         </tr>
         </tbody>
     </table>
+    <a href="/add_song">Dodaj Kawałek</a><br><br>
 </div>
-
-<a href="/add_musician">Dodaj muzyka</a><br><br>
-<a href="/add_recording">Dodaj płytę</a><br><br>
-
-
-
 </body>
 </html>

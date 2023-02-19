@@ -3,7 +3,6 @@ package pl.rutkowski.bandcollection.musician;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import pl.rutkowski.bandcollection.band.Band;
 import pl.rutkowski.bandcollection.band.BandRepository;
@@ -24,9 +23,7 @@ public class MusicianController {
     @GetMapping("/musician")
     public String home(Model model) {
         List<Musician> musicianList = musicianRepository.findAll();
-        List<Band> bandList = bandRepository.findAll();
-        model.addAttribute("musician", musicianList);
-        model.addAttribute("band", bandList);
+        model.addAttribute("musicians", musicianList);
         return "musician";
     }
 
@@ -45,10 +42,4 @@ public class MusicianController {
         return "redirect:/";
     }
 
-    @GetMapping("/musician/{id}")
-    public String band(@PathVariable Long id, Model model) {
-        Musician musician = musicianRepository.findById(id).orElseThrow();
-        model.addAttribute("musician", musician);
-        return "musician";
-    }
 }

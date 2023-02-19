@@ -9,27 +9,29 @@
 
 
 </head>
-<body class="image">
+<body>
 <div class="container">
-    <h1 th:text="${recording.name}" class="title" style="color: chartreuse"></h1>
+    <h1 th:text="Płyty" class="title" style="color: chartreuse"></h1>
     <a href="/">Powrót do strony głównej</a>
 
     <table class="table table-dark table-striped">
         <thead>
         <tr>
             <th scope="col">Nazwa</th>
+            <th scope="col">Zespół</th>
             <th scope="col">Rok powstania</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="recording : ${recording}">
+        <tr th:each="recording : ${recordings}">
             <td th:text="${recording.name}">Otto</td>
+            <td th:text="${recording.band}">Otto</td>
             <td th:text="${recording.yearOfCreation}">Otto</td>
         </tr>
         </tbody>
     </table>
+    <a href="/add_song">Dodaj kawałek</a>
 </div>
-<a href="/add_song">Dodaj kawałek</a>
 
 
 

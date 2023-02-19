@@ -67,4 +67,9 @@ public class Recording {
     public void setPossession(boolean possession) {
         this.possession = possession;
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

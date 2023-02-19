@@ -3,9 +3,7 @@ package pl.rutkowski.bandcollection.song;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import pl.rutkowski.bandcollection.band.BandRepository;
 import pl.rutkowski.bandcollection.recording.Recording;
 import pl.rutkowski.bandcollection.recording.RecordingRepository;
 
@@ -44,10 +42,4 @@ public class SongController {
         return "redirect:/";
     }
 
-    @GetMapping("/song/{id}")
-    public String song(@PathVariable Long id, Model model) {
-        Song song = songRepository.findById(id).orElseThrow();
-        model.addAttribute("song", song);
-        return "song";
-    }
 }
