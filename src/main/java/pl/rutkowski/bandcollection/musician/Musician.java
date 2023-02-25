@@ -4,25 +4,19 @@ import jakarta.persistence.*;
 import pl.rutkowski.bandcollection.Role;
 import pl.rutkowski.bandcollection.band.Band;
 
+import java.util.List;
+
 @Entity
 public class Musician {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @ManyToOne
-    private Band band;
+    @ManyToMany(cascade = CascadeType.REMOVE)
+    private List<Band> bands;
     private String name;
     @Enumerated(EnumType.STRING)
     private Role role;
-
-    public Band getBand() {
-        return band;
-    }
-
-    public void setBand(Band band) {
-        this.band = band;
-    }
 
     public Long getId() {
         return id;
@@ -30,6 +24,14 @@ public class Musician {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public List<Band> getBands() {
+        return bands;
+    }
+
+    public void setBands(List<Band> bands) {
+        this.bands = bands;
     }
 
     public String getName() {
@@ -47,5 +49,4 @@ public class Musician {
     public void setRole(Role role) {
         this.role = role;
     }
-
 }

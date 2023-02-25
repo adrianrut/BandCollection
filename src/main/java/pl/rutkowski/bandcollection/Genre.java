@@ -1,7 +1,8 @@
 package pl.rutkowski.bandcollection;
 
 public enum Genre {
-    Black, Death, Doom, Stoner, Sludge, Electronic, Industrial, Experimental,Avant_garde, Folk, Viking, Pagan,
-    Gothic, Grindcore, Groove, Heavy, Metalcore, Deathcore, Power, Progressive, Speed, Symphonic, Thrash
+
+    BLACK, DEATH, DOOM, STONER, SLUDGE, ELECTRONIC, INDUSTRIAL, EXPERIMENTAL, AVANT_GARDE, FOLK, VIKING, PAGAN,
+    GOTHIC, GRINDCORE, GROOVE, HEAVY, METALCORE, DEATHCORE, POWER, PROGRESSIVE, SPEED, SYMPHONIC, THRASH, OTHER
 
 }

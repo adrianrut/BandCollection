@@ -12,10 +12,10 @@ public class Recording {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     private Band band;
     private String name;
-    @OneToMany(mappedBy = "recording")
+    @OneToMany(mappedBy = "recording", cascade = CascadeType.REMOVE)
     private List<Song> songs;
     private Integer yearOfCreation;
     private boolean possession;
@@ -68,8 +68,4 @@ public class Recording {
         this.possession = possession;
     }
 
-    @Override
-    public String toString() {
-        return name;
-    }
 }

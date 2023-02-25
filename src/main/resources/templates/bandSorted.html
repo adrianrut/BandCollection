@@ -35,7 +35,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="band : ${band}">
+        <tr th:each="band : ${bandSort}">
             <td><a th:href="|@{band/{id}(id=${band.id})}|" th:text="${band.name}" style="color: red"></a></td>
             <td th:text="${band.genre}">Otto</td>
             <td th:text="${band.yearOfCreation}"></td>

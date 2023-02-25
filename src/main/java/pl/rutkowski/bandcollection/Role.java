@@ -1,6 +1,16 @@
 package pl.rutkowski.bandcollection;
 
 public enum Role {
-    Guitar, Bass, Drum, Keyboard, Vocal
+    GUITAR("Gitara"), BASS("Gitara basowa"), DRUM("Perkusja"),
+    KEYBOARD("Klawisze"), VOCAL("Wokal"), OTHER("Inne");
 
+    private final String description;
+
+    Role(String description) {
+        this.description = description;
+    }
+
+    public String getDescription() {
+        return description;
+    }
 }

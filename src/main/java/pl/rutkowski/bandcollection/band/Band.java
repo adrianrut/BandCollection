@@ -15,14 +15,13 @@ public class Band {
     private String name;
     @Enumerated(EnumType.STRING)
     private Genre genre;
-    @OneToMany(mappedBy = "band")
+    @ManyToMany(mappedBy = "bands", cascade = CascadeType.REMOVE)
     private List<Musician> musicians;
     @OneToMany(mappedBy = "band")
     private List<Recording> recordings;
     private Integer yearOfCreation;
     private Integer endDate;
     private boolean status;
-
 
     public Long getId() {
         return id;
@@ -48,6 +47,22 @@ public class Band {
         this.genre = genre;
     }
 
+    public List<Musician> getMusicians() {
+        return musicians;
+    }
+
+    public void setMusicians(List<Musician> musicians) {
+        this.musicians = musicians;
+    }
+
+    public List<Recording> getRecordings() {
+        return recordings;
+    }
+
+    public void setRecordings(List<Recording> recordings) {
+        this.recordings = recordings;
+    }
+
     public Integer getYearOfCreation() {
         return yearOfCreation;
     }
@@ -70,22 +85,6 @@ public class Band {
 
     public void setStatus(boolean status) {
         this.status = status;
-    }
-
-    public List<Musician> getMusicians() {
-        return musicians;
-    }
-
-    public void setMusicians(List<Musician> musicians) {
-        this.musicians = musicians;
-    }
-
-    public List<Recording> getRecordings() {
-        return recordings;
-    }
-
-    public void setRecordings(List<Recording> recordings) {
-        this.recordings = recordings;
     }
 
     @Override

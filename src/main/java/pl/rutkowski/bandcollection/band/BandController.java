@@ -2,9 +2,7 @@ package pl.rutkowski.bandcollection.band;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -12,35 +10,49 @@ import java.util.List;
 public class BandController {
 
     private final BandRepository bandRepository;
+    private final BandService bandService;
 
-    public BandController(BandRepository bandRepository) {
+    public BandController(BandRepository bandRepository, BandService bandService) {
         this.bandRepository = bandRepository;
+        this.bandService = bandService;
     }
 
-    @GetMapping("/")
-    public String home(Model model) {
-        List<Band> bandList = bandRepository.findAll();
-        model.addAttribute("band", bandList);
-        return "index";
-    }
-
-    @GetMapping("/add_band")
+    @GetMapping("/band/add")
     public String addBand(Model model) {
         Band band = new Band();
         model.addAttribute("band", band);
         return "addBand";
     }
 
-    @PostMapping("/add_band")
+    @PostMapping("/band/add")
     public String addBand(Band band) {
-        bandRepository.save(band);
-        return "redirect:/";
+        Band save = bandRepository.save(band);
+        Band bandSaving = bandRepository.findById(save.getId()).orElseThrow();
+        return "redirect:/band/" + bandSaving.getId();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/band/{id}")
     public String band(@PathVariable Long id, Model model) {
         Band band = bandRepository.findById(id).orElseThrow();
         model.addAttribute("band", band);
         return "band";
+    }
+
+    @GetMapping("/band/{id}/delete")
+    public String delete(@PathVariable Long id) {
+        bandRepository.deleteById(id);
+        return "redirect:/";
+    }
+
+    @GetMapping("/band")
+    public String bands(Model model, @RequestParam(required = false) String sort) {
+        List<Band> bandList;
+        if (sort != null) {
+            bandList = bandService.findAllSorted(sort);
+        } else {
+            return "redirect:/";
+        }
+        model.addAttribute("bandSort", bandList);
+        return "bandSorted";
     }
 }
