@@ -17,7 +17,7 @@ public class Band {
     private Genre genre;
     @ManyToMany(mappedBy = "bands", cascade = CascadeType.REMOVE)
     private List<Musician> musicians;
-    @OneToMany(mappedBy = "band")
+    @OneToMany(mappedBy = "band", cascade = CascadeType.REMOVE)
     private List<Recording> recordings;
     private Integer yearOfCreation;
     private Integer endDate;

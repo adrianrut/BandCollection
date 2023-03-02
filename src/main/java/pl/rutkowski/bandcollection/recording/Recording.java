@@ -12,7 +12,7 @@ public class Recording {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne
     private Band band;
     private String name;
     @OneToMany(mappedBy = "recording", cascade = CascadeType.REMOVE)

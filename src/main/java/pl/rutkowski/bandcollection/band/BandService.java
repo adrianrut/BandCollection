@@ -23,4 +23,13 @@ public class BandService {
         }
         return bandRepository.findAll();
     }
+
+    public void addBand(BandDto bandDto) {
+        Band band = new Band();
+        band.setId(bandDto.getBandId());
+        band.setName(bandDto.getName());
+        band.setGenre(bandDto.getGenre());
+        band.setYearOfCreation(bandDto.getYearOfCreation());
+        bandRepository.save(band);
+    }
 }

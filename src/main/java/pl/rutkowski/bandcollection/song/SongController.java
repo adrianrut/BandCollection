@@ -16,9 +16,12 @@ public class SongController {
     private final SongRepository songRepository;
     private final RecordingRepository recordingRepository;
 
-    public SongController(SongRepository songRepository, RecordingRepository recordingRepository) {
+    private final SongService songService;
+
+    public SongController(SongRepository songRepository, RecordingRepository recordingRepository, SongService songService) {
         this.songRepository = songRepository;
         this.recordingRepository = recordingRepository;
+        this.songService = songService;
     }
 
     @GetMapping("recording/{id}/song")
@@ -31,18 +34,19 @@ public class SongController {
     }
 
     @GetMapping("recording/{id}/add-song")
-    public String addBand(Model model, @PathVariable Long id) {
-        Song song = new Song();
+    public String addSong(Model model, @PathVariable Long id) {
+        SongDto songDto = new SongDto();
         Recording recording = recordingRepository.findById(id).orElseThrow();
+        songDto.setRecordingId(recording.getId());
         model.addAttribute("recording", recording);
-        model.addAttribute("song", song);
+        model.addAttribute("songDto", songDto);
         return "addSong";
     }
 
     @PostMapping("/add-song")
-    public String addSong(Song song) {
-        songRepository.save(song);
-        return "redirect:/";
+    public String addSong(SongDto songDto) {
+        songService.addSong(songDto);
+        return "redirect:/band/" + songDto.getRecordingId() + "/recording";
     }
 
 }

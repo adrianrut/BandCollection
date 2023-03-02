@@ -11,19 +11,37 @@
 <div class="container">
     <h1 th:text="|Dodaj muzyka do ${band.name}|"></h1>
     <a href="/">Powrót do strony głównej</a><br><br>
-    <form method="post" action="/add-musician" th:object="${musician}">
+    <h2>Dodaj istniejącego muzyka</h2>
+    <form method="post" action="/add-musician" th:object="${musicianDto}">
+        <input type="hidden" th:field="*{bandId}">
+        <select th:field="*{name}" class="form-select form-select-sm" aria-label=".form-select-sm example">
+            <option th:each="musician : ${musicianList}"
+                    th:value="${musician.name}" th:text="${musician.name}" value="1">One
+            </option>
+        </select>
+        <select th:field="*{role}" class="form-select form-select-sm" aria-label=".form-select-sm example">
+            <option th:each="role : ${T(pl.rutkowski.bandcollection.Role).values()}"
+                    th:value="${role}" th:text="${role.getDescription()}" value="1">One
+            </option>
+        </select>
+        <br>
+        <button type="submit" class="btn btn-dark">Dodaj</button>
+    </form>
+    <br><br>
+    <h2>lub</h2>
+    <h2>Dodaj nowego muzyka</h2>
+    <form method="post" action="/add-new-musician" th:object="${musicianDto}">
+        <input type="hidden" th:field="*{bandId}">
         <div class="input-group">
             <span class="input-group-text">Ksywa</span>
             <input th:field="*{name}" type="text" aria-label="First name" class="form-control">
         </div>
-        <select hidden="hidden" th:field="*{bands}" class="form-select form-select-sm" aria-label=".form-select-sm example">
-            <option th:each="band : ${band}"
-                    th:value="${band.id}" th:text="${band.name}" value="1">One</option>
-        </select>
         <select th:field="*{role}" class="form-select form-select-sm" aria-label=".form-select-sm example">
             <option th:each="role : ${T(pl.rutkowski.bandcollection.Role).values()}"
-                    th:value="${role}" th:text="${role.getDescription()}" value="1">One</option>
+                    th:value="${role}" th:text="${role.getDescription()}" value="1">One
+            </option>
         </select>
+        <br>
         <button type="submit" class="btn btn-dark">Dodaj</button>
     </form>
 </div>

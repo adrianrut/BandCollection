@@ -37,18 +37,19 @@ public class RecordingController {
     }
 
     @GetMapping("/band/{bandId}/add-recording")
-    public String addBand(Model model, @PathVariable Long bandId) {
-        Recording recording = new Recording();
+    public String addRecording(Model model, @PathVariable Long bandId) {
+        RecordingDto recordingDto = new RecordingDto();
         Band band = bandRepository.findById(bandId).orElseThrow();
-        model.addAttribute("recording", recording);
+        recordingDto.setBandId(bandId);
+        model.addAttribute("recordingDto", recordingDto);
         model.addAttribute("band", band);
         return "addRecording";
     }
 
     @PostMapping("/add-recording")
-    public String addBand(Recording recording) {
-        recordingRepository.save(recording);
-        return "redirect:/";
+    public String addRecording(RecordingDto recordingDto) {
+        recordingService.addRecording(recordingDto);
+        return "redirect:/band/" + recordingDto.getBandId();
     }
 
     @GetMapping("/band/{bandId}/recording")

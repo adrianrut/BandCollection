@@ -35,17 +35,26 @@ public class MusicianController {
 
     @GetMapping("/band/{bandId}/add-musician")
     public String addMusician(Model model, @PathVariable Long bandId) {
-        Musician musician = new Musician();
+        MusicianDto musicianDto = new MusicianDto();
+        musicianDto.setBandId(bandId);
+        List<Musician> musicianList = musicianRepository.findAll();
         Band band = bandRepository.findById(bandId).orElseThrow();
-        model.addAttribute("musician", musician);
+        model.addAttribute("musicianDto", musicianDto);
+        model.addAttribute("musicianList", musicianList);
         model.addAttribute("band", band);
         return "addMusician";
     }
 
     @PostMapping("/add-musician")
-    public String addMusician(Musician musician) {
-        musicianRepository.save(musician);
-        return "redirect:/";
+    public String addMusician(MusicianDto musicianDto) {
+        musicianService.addMusician(musicianDto);
+        return "redirect:/band/" + musicianDto.getBandId();
+    }
+
+    @PostMapping("/add-new-musician")
+    public String addNewMusician(MusicianDto musicianDto) {
+        musicianService.addMusician(musicianDto);
+        return "redirect:/band/" + musicianDto.getBandId();
     }
 
     @GetMapping("/musician/{id}/delete")

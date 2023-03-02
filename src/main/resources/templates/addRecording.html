@@ -11,15 +11,12 @@
 <div class="container">
     <h1 th:text="|Dodaj płytę do ${band.name}|"></h1>
     <a href="/">Powrót do strony głównej</a><br><br>
-    <form method="post" action="/add-recording" th:object="${recording}">
+    <form method="post" action="/add-recording" th:object="${recordingDto}">
+        <input type="hidden" th:field="*{bandId}">
         <div class="input-group">
             <span class="input-group-text">Nazwa</span>
             <input th:field="*{name}" type="text" aria-label="First name" class="form-control">
         </div>
-        <select hidden="hidden" th:field="*{band}" class="form-select form-select-sm" aria-label=".form-select-sm example">
-            <option th:each="band : ${band}"
-                    th:value="${band.id}" th:text="${band.name}" value="1">One</option>
-        </select>
         <div class="input-group">
             <span class="input-group-text">Rok wydania</span>
             <input th:field="*{yearOfCreation}" type="text" aria-label="First name" class="form-control">

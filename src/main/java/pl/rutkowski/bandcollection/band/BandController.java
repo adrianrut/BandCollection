@@ -19,16 +19,15 @@ public class BandController {
 
     @GetMapping("/band/add")
     public String addBand(Model model) {
-        Band band = new Band();
-        model.addAttribute("band", band);
+        BandDto bandDto = new BandDto();
+        model.addAttribute("bandDto", bandDto);
         return "addBand";
     }
 
     @PostMapping("/band/add")
-    public String addBand(Band band) {
-        Band save = bandRepository.save(band);
-        Band bandSaving = bandRepository.findById(save.getId()).orElseThrow();
-        return "redirect:/band/" + bandSaving.getId();
+    public String addBand(BandDto bandDto) {
+        bandService.addBand(bandDto);
+        return "redirect:/";
     }
 
     @GetMapping("/band/{id}")
