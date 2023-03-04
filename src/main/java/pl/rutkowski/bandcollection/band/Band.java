@@ -21,7 +21,7 @@ public class Band {
     private List<Recording> recordings;
     private Integer yearOfCreation;
     private Integer endDate;
-    private boolean status;
+    private Boolean status;
 
     public Long getId() {
         return id;
@@ -79,11 +79,11 @@ public class Band {
         this.endDate = endDate;
     }
 
-    public boolean isStatus() {
+    public Boolean getStatus() {
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(Boolean status) {
         this.status = status;
     }
 

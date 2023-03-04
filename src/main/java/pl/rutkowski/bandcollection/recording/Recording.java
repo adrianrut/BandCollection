@@ -18,7 +18,7 @@ public class Recording {
     @OneToMany(mappedBy = "recording", cascade = CascadeType.REMOVE)
     private List<Song> songs;
     private Integer yearOfCreation;
-    private boolean possession;
+    private Boolean possession;
 
     public Band getBand() {
         return band;
@@ -60,12 +60,11 @@ public class Recording {
         this.yearOfCreation = yearOfCreation;
     }
 
-    public boolean isPossession() {
+    public Boolean getPossession() {
         return possession;
     }
 
-    public void setPossession(boolean possession) {
+    public void setPossession(Boolean possession) {
         this.possession = possession;
     }
-
 }

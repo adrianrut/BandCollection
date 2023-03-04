@@ -6,6 +6,8 @@ public class UserDto {
     private String firstName;
     private String lastName;
     private LocalDate dateOfBirth;
+    private String email;
+    private boolean newsletter;
 
     public String getFirstName() {
         return firstName;
@@ -29,5 +31,21 @@ public class UserDto {
 
     public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public boolean isNewsletter() {
+        return newsletter;
+    }
+
+    public void setNewsletter(boolean newsletter) {
+        this.newsletter = newsletter;
     }
 }

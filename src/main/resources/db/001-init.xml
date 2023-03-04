@@ -38,7 +38,7 @@
                 <constraints primaryKey="true"/>
             </column>
             <column
-                    name="bands" type="varchar(255)">
+                    name="band_id" type="bigint">
             </column>
             <column
                     name="name" type="varchar(255)">
@@ -53,10 +53,16 @@
                 <constraints primaryKey="true"/>
             </column>
             <column
-                    name="band" type="varchar(255)">
+                    name="band_id" type="bigint">
             </column>
             <column
                     name="name" type="varchar(255)">
+            </column>
+            <column
+                    name="year_of_creation" type="int">
+            </column>
+            <column
+                    name="possession" type="boolean">
             </column>
         </createTable>
 
@@ -65,12 +71,23 @@
                 <constraints primaryKey="true"/>
             </column>
             <column
-                    name="recording" type="varchar(255)">
+                    name="recording_id" type="bigint">
             </column>
             <column
                     name="name" type="varchar(255)">
             </column>
+        </createTable>
 
+        <createTable tableName="musician_bands">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column
+                    name="musicians_id" type="bigint">
+            </column>
+            <column
+                    name="bands_id" type="bigint">
+            </column>
         </createTable>
 
         <createTable tableName="users">

@@ -22,6 +22,8 @@ public class UserService {
         users.setFirstName(userDto.getFirstName());
         users.setLastName(userDto.getLastName());
         users.setDateOfBirth(userDto.getDateOfBirth());
+        users.setEmail(userDto.getEmail());
+        users.setNewsletter(userDto.isNewsletter());
         userRepository.save(users);
     }
 }

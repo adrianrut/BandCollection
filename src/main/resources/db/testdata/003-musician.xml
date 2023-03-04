@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+      https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+
+    <changeSet id="003-testdata-3" author="arutkowski" context="dev">
+        <insert tableName="musician">
+            <column name="role" value="GUITAR"/>
+            <column name="name" value="Morsu"/>
+        </insert>
+        <insert tableName="musician">
+            <column name="role" value="GUITAR"/>
+            <column name="name" value="Migdal"/>
+        </insert>
+        <insert tableName="musician">
+            <column name="role" value="BASS"/>
+            <column name="name" value="Suhy"/>
+        </insert>
+        <insert tableName="musician">
+            <column name="role" value="DRUM"/>
+            <column name="name" value="Omen"/>
+        </insert>
+        <insert tableName="musician">
+            <column name="role" value="VOCAL"/>
+            <column name="name" value="Nergal"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

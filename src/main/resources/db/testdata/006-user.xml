@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+      https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+
+    <changeSet id="006-testdata-6" author="arutkowski" context="dev">
+        <insert tableName="users">
+            <column name="first_name" value="Andrzej"/>
+            <column name="last_name" value="Krzywy"/>
+            <column name="date_of_birth" value="1980-06-24"/>
+            <column name="email" value="a.krzywy@gmail"/>
+            <column name="newsletter" value="true"/>
+        </insert>
+        <insert tableName="users">
+            <column name="first_name" value="Adam"/>
+            <column name="last_name" value="Małysz"/>
+            <column name="date_of_birth" value="1970-03-25"/>
+            <column name="email" value="a.malysz@gmail"/>
+            <column name="newsletter" value="false"/>
+        </insert>
+        <insert tableName="users">
+            <column name="first_name" value="Krzysztof"/>
+            <column name="last_name" value="Krawczyk"/>
+            <column name="date_of_birth" value="1950-03-15"/>
+            <column name="email" value="k.krawczyk@gmail"/>
+            <column name="newsletter" value="true"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
+
+

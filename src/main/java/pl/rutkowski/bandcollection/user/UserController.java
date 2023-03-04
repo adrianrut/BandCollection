@@ -26,7 +26,6 @@ public class UserController {
     @GetMapping("/user/add")
     public String addUser(Model model) {
         UserDto userDto = new UserDto();
-        userService.addUser(userDto);
         model.addAttribute("userDto", userDto);
         return "addUser";
     }
