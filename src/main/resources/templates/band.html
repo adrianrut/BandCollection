@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Kolekcja kapel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.css">
+
+
+</head>
+<body class="image">
+<div class="container">
+    <h1 th:text="${band.name}"></h1>
+    <a href="/">Powrót do strony głównej</a><br><br>
+    <table class="table table-dark table-striped">
+        <thead>
+        <tr>
+            <th scope="col">Gatunek</th>
+            <th scope="col">Skład</th>
+            <th scope="col">Dyskografia</th>
+            <th scope="col">Rok powstania</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td th:text="${band.genre}">Otto</td>
+            <td>
+                <ul th:each="musician : ${band.musicians}">
+                    <li th:text="|${musician.name} - ${musician.role.getDescription()}|"></li>
+                </ul>
+            </td>
+            <td>
+                <ul th:each="recordings : ${band.recordings}">
+                    <li><a th:href="|/band/${band.id}/recording|" th:text="${recordings.name}"></a></li>
+                </ul>
+            </td>
+            <td th:text="${band.yearOfCreation}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <a th:href="|/band/${band.id}/add-musician|">Dodaj muzyka</a><br><br>
+    <a th:href="|/band/${band.id}/add-recording|">Dodaj płytę</a><br><br>
+    <a th:href="|/band/${band.id}/delete|" style="color: red">Usuń zespół</a><br><br>
+</div>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+      https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+
+    <include file="001-init.xml" relativeToChangelogFile="true"/>
+    <include file="002-addEmailAndNewsletter.xml" relativeToChangelogFile="true"/>
+    <include file="testdata/001-band.xml" relativeToChangelogFile="true" context="dev"/>
+    <include file="testdata/002-recording.xml" relativeToChangelogFile="true" context="dev"/>
+    <include file="testdata/003-musician.xml" relativeToChangelogFile="true" context="dev"/>
+    <include file="testdata/004-song.xml" relativeToChangelogFile="true" context="dev"/>
+    <include file="testdata/005-musicianBands.xml" relativeToChangelogFile="true" context="dev"/>
+    <include file="testdata/006-user.xml" relativeToChangelogFile="true" context="dev"/>
+</databaseChangeLog>
