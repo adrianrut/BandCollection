@@ -12,6 +12,8 @@
             <column name="date_of_birth" value="1980-06-24"/>
             <column name="email" value="a.krzywy@gmail"/>
             <column name="newsletter" value="true"/>
+            <column name="password" value="{noop}haslo1"/>
+            <column name="user_role" value= "2"/>
         </insert>
         <insert tableName="users">
             <column name="first_name" value="Adam"/>
@@ -19,6 +21,8 @@
             <column name="date_of_birth" value="1970-03-25"/>
             <column name="email" value="a.malysz@gmail"/>
             <column name="newsletter" value="false"/>
+            <column name="password" value="{noop}haslo2"/>
+            <column name="user_role" value= "1"/>
         </insert>
         <insert tableName="users">
             <column name="first_name" value="Krzysztof"/>
@@ -26,6 +30,8 @@
             <column name="date_of_birth" value="1950-03-15"/>
             <column name="email" value="k.krawczyk@gmail"/>
             <column name="newsletter" value="true"/>
+            <column name="password" value="{noop}haslo3"/>
+            <column name="user_role" value= "2"/>
         </insert>
     </changeSet>
 </databaseChangeLog>

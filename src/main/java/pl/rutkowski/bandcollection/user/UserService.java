@@ -1,16 +1,19 @@
 package pl.rutkowski.bandcollection.user;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.*;
 
 @Service
 public class UserService {
 
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public List<Users> getUsers() {
@@ -23,7 +26,13 @@ public class UserService {
         users.setLastName(userDto.getLastName());
         users.setDateOfBirth(userDto.getDateOfBirth());
         users.setEmail(userDto.getEmail());
+        List<UserRole> roles = Collections.singletonList(new UserRole(users, Role.ROLE_USER));
+        users.setUserRole(new HashSet<>(roles));
+        String encryptedPassword = passwordEncoder.encode(userDto.getPassword());
+        users.setPassword(encryptedPassword);
         users.setNewsletter(userDto.isNewsletter());
         userRepository.save(users);
     }
+
+
 }

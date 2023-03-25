@@ -1,7 +1,5 @@
 package pl.rutkowski.bandcollection.musician;
 
-import pl.rutkowski.bandcollection.Role;
-
 public class MusicianDto {
     private String name;
     private Long bandId;

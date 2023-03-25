@@ -1,7 +1,6 @@
 package pl.rutkowski.bandcollection.musician;
 
 import jakarta.persistence.*;
-import pl.rutkowski.bandcollection.Role;
 import pl.rutkowski.bandcollection.band.Band;
 
 import java.util.List;

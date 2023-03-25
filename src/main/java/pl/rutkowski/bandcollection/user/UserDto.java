@@ -7,7 +7,10 @@ public class UserDto {
     private String lastName;
     private LocalDate dateOfBirth;
     private String email;
+    private String password;
     private boolean newsletter;
+    private String role;
+
 
     public String getFirstName() {
         return firstName;
@@ -47,5 +50,21 @@ public class UserDto {
 
     public void setNewsletter(boolean newsletter) {
         this.newsletter = newsletter;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }

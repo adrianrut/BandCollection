@@ -1,12 +1,10 @@
 package pl.rutkowski.bandcollection.user;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
 public class Users {
@@ -19,6 +17,9 @@ public class Users {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateOfBirth;
     private String email;
+    private String password;
+    @OneToMany(mappedBy = "users", cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
+    private Set<UserRole> userRole;
     private boolean newsletter;
 
     public Long getId() {
@@ -67,5 +68,21 @@ public class Users {
 
     public void setNewsletter(boolean newsletter) {
         this.newsletter = newsletter;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Set<UserRole> getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(Set<UserRole> userRole) {
+        this.userRole = userRole;
     }
 }

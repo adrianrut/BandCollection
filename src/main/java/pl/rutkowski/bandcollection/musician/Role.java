@@ -1,4 +1,4 @@
-package pl.rutkowski.bandcollection;
+package pl.rutkowski.bandcollection.musician;
 
 public enum Role {
     GUITAR("Gitara"), BASS("Gitara basowa"), DRUM("Perkusja"),

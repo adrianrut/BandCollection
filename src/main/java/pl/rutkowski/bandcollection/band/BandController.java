@@ -17,6 +17,13 @@ public class BandController {
         this.bandService = bandService;
     }
 
+    @GetMapping("/band/homepage")
+    public String home(Model model) {
+        List<Band> bandList = bandRepository.findAll();
+        model.addAttribute("band", bandList);
+        return "bandHomepage";
+    }
+
     @GetMapping("/band/add")
     public String addBand(Model model) {
         BandDto bandDto = new BandDto();
