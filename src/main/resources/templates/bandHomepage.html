@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<html lang="pl" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Kolekcja kapel</title>
@@ -15,7 +15,8 @@
     <a href="band/add">Dodaj kapele</a><br><br>
     <a href="/musician">Wyświetl muzyków</a><br><br>
     <a href="/recording">Wyświetl płyty</a><br><br>
-    <a href="/user">Wyświetl użytkowników</a><br><br>
+    <div sec:authorize="hasRole('ADMIN')"><a href="/admin">Panel administratora</a></div><br>
+    <div sec:authorize="hasAnyRole('USER', 'ADMIN')" ><a th:href="@{/user-panel/{id}(id=${userId})}">Panel użytkownika</a></div><br>
     <a href="/logout">Wyloguj się</a>
     <table class="table table-dark table-striped">
         <thead>

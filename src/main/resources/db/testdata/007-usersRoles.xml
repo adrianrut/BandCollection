@@ -7,10 +7,20 @@
 
     <changeSet id="007-testdata-7" author="arutkowski" context="dev">
         <insert tableName="user_role">
-            <column name="name" value="ROLE_ADMIN"/>
+            <column name="users_id" value="1"/>
+            <column name="role" value="ROLE_ADMIN"/>
         </insert>
         <insert tableName="user_role">
-            <column name="name" value="ROLE_USER"/>
+            <column name="users_id" value="1"/>
+            <column name="role" value="ROLE_USER"/>
+        </insert>
+        <insert tableName="user_role">
+            <column name="users_id" value="2"/>
+            <column name="role" value="ROLE_USER"/>
+        </insert>
+        <insert tableName="user_role">
+            <column name="users_id" value="3"/>
+            <column name="role" value="ROLE_USER"/>
         </insert>
     </changeSet>
 </databaseChangeLog>

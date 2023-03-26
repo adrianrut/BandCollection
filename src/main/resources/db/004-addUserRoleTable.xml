@@ -11,7 +11,10 @@
                 <constraints primaryKey="true"/>
             </column>
             <column
-                    name="name" type="varchar(255)">
+                    name="users_id" type="bigint">
+            </column>
+            <column
+                    name="role" type="varchar(255)">
             </column>
         </createTable>
     </changeSet>

@@ -10,7 +10,7 @@
 <body class="image">
 <div class="container">
     <h1 th:text="|Dodaj płytę do ${band.name}|"></h1>
-    <a href="/">Powrót do strony głównej</a><br><br>
+    <a href="/band/homepage">Powrót do strony głównej</a><br><br>
     <form method="post" action="/add-recording" th:object="${recordingDto}">
         <input type="hidden" th:field="*{bandId}">
         <div class="input-group">

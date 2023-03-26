@@ -10,7 +10,7 @@
 <body class="image">
 <div class="container">
     <h1 th:text="|Dodaj muzyka do ${band.name}|"></h1>
-    <a href="/">Powrót do strony głównej</a><br><br>
+    <a href="/band/homepage">Powrót do strony głównej</a><br><br>
     <h2>Dodaj istniejącego muzyka</h2>
     <form method="post" action="/add-musician" th:object="${musicianDto}">
         <input type="hidden" th:field="*{bandId}">
@@ -20,7 +20,7 @@
             </option>
         </select>
         <select th:field="*{role}" class="form-select form-select-sm" aria-label=".form-select-sm example">
-            <option th:each="role : ${T(pl.rutkowski.bandcollection.Role).values()}"
+            <option th:each="role : ${T(pl.rutkowski.bandcollection.musician.Role).values()}"
                     th:value="${role}" th:text="${role.getDescription()}" value="1">One
             </option>
         </select>

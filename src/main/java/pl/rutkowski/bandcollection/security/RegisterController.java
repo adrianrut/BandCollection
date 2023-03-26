@@ -8,6 +8,7 @@ import pl.rutkowski.bandcollection.user.UserDto;
 import pl.rutkowski.bandcollection.user.UserService;
 
 
+
 @Controller
 public class RegisterController {
 
@@ -19,14 +20,18 @@ public class RegisterController {
 
     @GetMapping("/register")
     public String registerForm(Model model) {
-        UserDto userDto = new UserDto();
-        model.addAttribute("userDto", userDto);
+        model.addAttribute("userDto", new UserDto());
         return "registerForm";
     }
 
     @PostMapping("/register")
     public String register(UserDto userDto) {
         userService.addUser(userDto);
-        return "redirect:/";
+        return "redirect:/register/success";
+    }
+
+    @GetMapping("/register/success")
+    public String confirmRegistration() {
+        return "registerSuccess";
     }
 }

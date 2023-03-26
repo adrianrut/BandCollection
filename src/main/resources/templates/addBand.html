@@ -10,8 +10,8 @@
 <body class="image">
 <div class="container">
     <h1>Dodaj kapele</h1>
-    <a href="/">Powrót do strony głównej</a><br><br>
-    <form method="post" action="/band/add" th:object="${bandDto}">
+    <a href="/band/homepage">Powrót do strony głównej</a><br><br>
+    <form method="post" action="/band/band/add" th:object="${bandDto}">
         <div class="input-group">
             <span class="input-group-text">Nazwa</span>
             <input th:field="*{name}" type="text" aria-label="First name" class="form-control">

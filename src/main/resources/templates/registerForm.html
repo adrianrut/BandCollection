@@ -12,44 +12,38 @@
 <div class="container">
     <h1>Zarejestruj się</h1>
     <img src="https://img.genial.ly/5fc8c1df474f670f424da6dc/5f977567-d695-481b-9e85-aa15980972dc.png" alt="login-img">
-    <form class="row g-3 needs-validation" th:action="@{/register}" novalidate th:object="${userDto}">
-        <input type="hidden" th:name="*{role}"
-               th:value="${T(pl.rutkowski.bandcollection.user.Role).ROLE_USER}">
+    <form class="row g-3 needs-validation" action="#" method="post" th:action="@{/register}" th:object="${userDto}">
         <div class="col-md-4">
             <label for="validationCustom01" class="form-label" style="color: white">Imię</label>
-            <input type="text" th:name="*{firstName}" class="form-control" id="validationCustom01">
-            <div class="valid-feedback">
-                Looks good!
-            </div>
+            <input type="text" th:field="*{firstName}" class="form-control" id="validationCustom01">
+
         </div>
         <div class="col-md-4">
             <label for="validationCustom02" class="form-label" style="color: white">Nazwisko</label>
-            <input type="text" class="form-control" th:name="*{lastName}" id="validationCustom02">
-            <div class="valid-feedback">
-                Looks good!
-            </div>
+            <input type="text" class="form-control" th:field="*{lastName}" id="validationCustom02">
+
         </div>
         <div>
             <label>
                 <span style="color: white">Data urodzenia</span>
-                <input type="date" th:name="*{dateOfBirth}">
+                <input type="date" th:field="*{dateOfBirth}">
             </label>
         </div>
         <div class="col-md-4">
             <label for="validationCustomUsername" class="form-label" style="color: white">Email</label>
             <div class="input-group has-validation">
                 <span class="input-group-text" id="inputGroupPrepend">@</span>
-                <input type="text" class="form-control" th:name="*{email}" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+                <input type="text" class="form-control" th:field="*{email}" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
             </div>
         </div>
         <div class="col-md-6">
             <label for="validationCustom03" class="form-label" style="color: white">Hasło</label>
-            <input type="password" th:name="*{password}" class="form-control" id="validationCustom03" required>
+            <input type="password" th:field="*{password}" class="form-control" id="validationCustom03" required>
         </div>
         <div class="col-12">
             <div class="form-check">
                 <label>
-                    <input class="form-check-input" th:name="*{newsletter}" type="checkbox" value="" id="invalidCheck" required>
+                    <input class="form-check-input" th:field="*{newsletter}" type="checkbox" value="" id="invalidCheck">
                     <label class="form-check-label" for="invalidCheck">
                         <span style="color: white">Zapisz się do newslettera</span>
                     </label>
