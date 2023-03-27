@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dodaj kawałek</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/styles/style.css">
+</head>
+<body class="image">
+<div class="container">
+    <h1 th:text="|Dodaj kawałek do płyty ${recording.name}|"></h1>
+    <a href="/band/homepage">Powrót do strony głównej</a><br><br>
+    <form method="post" action="/add-song" th:object="${songDto}">
+        <div class="input-group">
+            <span class="input-group-text">Nazwa</span>
+            <input th:field="*{name}" type="text" aria-label="First name" class="form-control">
+        </div>
+        <select hidden="hidden" th:field="*{recordingId}" class="form-select form-select-sm" aria-label=".form-select-sm example">
+            <option th:each="recording : ${recording}"
+                    th:value="${recording.id}" th:text="${recording.name}" value="1">One</option>
+        </select>
+        <button type="submit" class="btn btn-dark">Dodaj</button>
+    </form>
+</div>
+</body>
+</html>

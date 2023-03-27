@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Użytkownicy</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="/styles/style.css">
+
+
+</head>
+<body class="image">
+<div class="container">
+    <h1>Użytkownik</h1>
+    <a href="/band/homepage">Powrót do strony głównej</a><br><br>
+    <form method="post" th:object="${user}" th:action="@{/user-panel/{id}(id=${user.id})}">
+        <input type="hidden" th:name="${user.email}">
+        <input type="hidden" th:name="${roles}">
+<!--        <input type="hidden" th:each="roles : ${user.userRole}" th:name="${roles.role}">-->
+        <table class="table table-dark table-striped">
+            <thead>
+            <tr>
+                <th scope="col">
+                    Imię
+                </th>
+                <th scope="col">
+                    Nazwisko
+                </th>
+                <th scope="col">
+                    Data urodzenia
+                </th>
+                <th scope="col">
+                    Hasło
+                </th>
+                <th scope="col">
+                    Newsletter
+                </th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><label>
+                    <input name="firstName" th:value="*{firstName}" type="text">
+                </label></td>
+                <td><label>
+                    <input name="lastName" th:value="*{lastName}" type="text">
+                </label></td>
+                <td><label>
+                    <input name="dateOfBirth" th:value="*{dateOfBirth}" type="date">
+                </label></td>
+                <td><label>
+                    <input name="email" th:value="*{password}" type="password">
+                </label></td>
+                <td>
+                    <div class="form-check">
+                        <label>
+                            <input th:field="*{newsletter}" class="form-check-input" type="checkbox" th:value="*{newsletter}" value="" id="flexCheckDefault">
+                        </label>
+                        <label class="form-check-label" for="flexCheckDefault" style="color: white">
+                            Newsletter
+                        </label>
+                    </div>
+                </td>
+
+            </tr>
+            </tbody>
+        </table>
+        <div class="col-12">
+            <button class="btn btn-primary" type="submit">Zapisz zmiany</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

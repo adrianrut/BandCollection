@@ -1,0 +1,35 @@
+.image {
+    background-image: url("https://medicaldialogues.in/h-upload/2022/10/27/189071-fire-new.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 400px;
+    width: 100%;
+}
+
+h1 {
+    font-family: cursive;
+    text-align: center;
+    color: chartreuse;
+
+}
+
+.container {
+    margin-top: 30px;
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+}
+
+h2 {
+    font-family: cursive;
+    text-align: center;
+    color: chartreuse;
+
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+}

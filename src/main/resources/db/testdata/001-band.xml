@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+      https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+
+    <changeSet id="001-testdata-1" author="arutkowski" context="dev">
+        <insert tableName="band">
+            <column name="name" value="Camyenna"/>
+            <column name="genre" value="BLACK"/>
+            <column name="year_of_creation" value="2001"/>
+        </insert>
+        <insert tableName="band">
+            <column name="name" value="Behemoth"/>
+            <column name="genre" value="DEATH"/>
+            <column name="year_of_creation" value="1990"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
+
+
+

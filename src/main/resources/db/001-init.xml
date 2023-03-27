@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+      https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+
+    <changeSet id="001-init" author="arutkowski">
+        <createTable tableName="band">
+            <column name="id" autoIncrement="true" type="bigint">
+                <constraints primaryKey="true"/>
+            </column>
+            <column
+                    name="name" type="varchar(255)">
+            </column>
+            <column
+                    name="genre" type="varchar(255)">
+            </column>
+            <column
+                    name="musicians" type="varchar(255)">
+            </column>
+            <column
+                    name="recordings" type="varchar(255)">
+            </column>
+            <column
+                    name="year_of_creation" type="int">
+            </column>
+            <column
+                    name="end_date" type="int">
+            </column>
+            <column
+                    name="status" type="boolean">
+            </column>
+        </createTable>
+
+        <createTable tableName="musician">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column
+                    name="band_id" type="bigint">
+            </column>
+            <column
+                    name="name" type="varchar(255)">
+            </column>
+            <column
+                    name="role" type="varchar(255)">
+            </column>
+        </createTable>
+
+        <createTable tableName="recording">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column
+                    name="band_id" type="bigint">
+            </column>
+            <column
+                    name="name" type="varchar(255)">
+            </column>
+            <column
+                    name="year_of_creation" type="int">
+            </column>
+            <column
+                    name="possession" type="boolean">
+            </column>
+        </createTable>
+
+        <createTable tableName="song">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column
+                    name="recording_id" type="bigint">
+            </column>
+            <column
+                    name="name" type="varchar(255)">
+            </column>
+        </createTable>
+
+        <createTable tableName="musician_bands">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column
+                    name="musicians_id" type="bigint">
+            </column>
+            <column
+                    name="bands_id" type="bigint">
+            </column>
+        </createTable>
+
+        <createTable tableName="users">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column
+                    name="first_name" type="varchar(255)">
+            </column>
+            <column
+                    name="last_name" type="varchar(255)">
+            </column>
+            <column
+                    name="date_of_birth" type="date">
+            </column>
+        </createTable>
+
+    </changeSet>
+</databaseChangeLog>
