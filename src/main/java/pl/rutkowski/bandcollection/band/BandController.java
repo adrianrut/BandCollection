@@ -40,7 +40,7 @@ public class BandController {
     @PostMapping("/band/add")
     public String addBand(BandDto bandDto) {
         bandService.addBand(bandDto);
-        return "redirect:/band/homepage";
+        return "redirect:/";
     }
 
     @GetMapping("/{id}")

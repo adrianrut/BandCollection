@@ -8,7 +8,6 @@ import pl.rutkowski.bandcollection.user.UserDto;
 import pl.rutkowski.bandcollection.user.UserService;
 
 
-
 @Controller
 public class RegisterController {
 
@@ -27,7 +26,7 @@ public class RegisterController {
     @PostMapping("/register")
     public String register(UserDto userDto) {
         userService.addUser(userDto);
-        return "redirect:/register/success";
+        return "redirect:/login";
     }
 
     @GetMapping("/register/success")

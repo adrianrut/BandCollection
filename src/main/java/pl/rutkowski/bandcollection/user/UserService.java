@@ -71,12 +71,10 @@ public class UserService {
     public void updateUserRole(Long id, RoleDto roleDto) {
         userRoleRepository.deleteUserRoleByUsersId(id);
         Users userToUpdate = userRepository.findById(id).orElseThrow();
-//        List<UserRole> roles = Collections.singletonList(new UserRole(user, Role.valueOf(user.getUserRole().toString())));
         Set<UserRole> roles = roleDto.getRoles().stream()
                 .map(role -> new UserRole(userToUpdate, role))
                 .collect(Collectors.toSet());
         userToUpdate.setUserRole(roles);
-//        userRepository.save(userToUpdate);
         userRoleRepository.saveAll(userToUpdate.getUserRole());
     }
 

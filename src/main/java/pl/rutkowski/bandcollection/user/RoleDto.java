@@ -8,6 +8,9 @@ public class RoleDto {
     Set<Role> roles = new HashSet<>();
     private Users user;
 
+    public RoleDto() {
+    }
+
     public RoleDto(Users user) {
         this.id = user.getId();
         this.user = user;
@@ -23,6 +26,10 @@ public class RoleDto {
 
     public Set<Role> getRoles() {
         return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 
     public void setUser(Users user) {
