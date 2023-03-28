@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+      https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+
+    <changeSet id="002-testdata-2" author="arutkowski" context="dev">
+        <insert tableName="recording">
+            <column name="band_id" value="1"/>
+            <column name="name" value="Legenda"/>
+            <column name="year_of_creation" value="2022"/>
+        </insert>
+        <insert tableName="recording">
+            <column name="band_id" value="2"/>
+            <column name="name" value="Demigod"/>
+            <column name="year_of_creation" value="2010"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

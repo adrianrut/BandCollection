@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+      https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+
+    <changeSet id="004-testdata-4" author="arutkowski" context="dev">
+        <insert tableName="song">
+            <column name="recording_id" value="1"/>
+            <column name="name" value="Dar śmierci"/>
+        </insert>
+        <insert tableName="song">
+            <column name="recording_id" value="1"/>
+            <column name="name" value="Euphoria Lamnetoso"/>
+        </insert>
+        <insert tableName="song">
+            <column name="recording_id" value="2"/>
+            <column name="name" value="Slaves shall serve"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
+
