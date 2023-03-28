@@ -50,9 +50,7 @@
             <td th:if="${user.newsletter}">Zapisany</td>
             <td th:unless="${user.newsletter}">Nie zapisany</td>
             <td>
-                <ul th:each="roles : ${user.userRole}">
-                    <li th:text="${roles.role.getDescription()}"></li>
-                </ul>
+                <li th:each="roles : ${user.userRole}" th:text="${roles.role.getDescription()}"></li>
             </td>
             <td><a th:href="@{/admin/edit-user/{id}(id=${user.id})}"><i class="fa fa-edit" style="font-size:24px"></i></a>
             </td>

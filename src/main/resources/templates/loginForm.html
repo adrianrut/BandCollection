@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Zaloguj się</title>
@@ -11,13 +11,14 @@
 <body class="image">
 <div class="container">
     <h1>Zaloguj się</h1>
+    <h2 th:if="${successMessage}">Konto zostało utworzone poprawnie</h2>
     <img src="https://img.genial.ly/5fc8c1df474f670f424da6dc/5f977567-d695-481b-9e85-aa15980972dc.png" alt="login-img">
-    <form class="login-form" action="/login" method="post">
+    <form class="login-form" th:action="@{/login}" method="post">
         <label>
-            <input name="username" placeholder="nazwa użytkownika" class="form-item">
+            <input name="username" placeholder="nazwa użytkownika" class="form-item" required>
         </label>
         <label>
-            <input name="password" placeholder="hasło" type="password" class="form-item">
+            <input name="password" placeholder="hasło" type="password" class="form-item" required>
         </label>
         <label>
             <button type="submit" class="form-item">Zaloguj się</button>

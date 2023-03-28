@@ -15,18 +15,15 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(requests -> requests.requestMatchers("/styles/**").permitAll());
         http.authorizeHttpRequests(requests -> requests.requestMatchers("/").permitAll());
-        http.authorizeHttpRequests(requests -> requests.requestMatchers("/register").permitAll());
         http.authorizeHttpRequests(requests -> requests.requestMatchers("/register/**").permitAll());
         http.authorizeHttpRequests(request -> request.requestMatchers("/admin").hasRole("ADMIN"));
-        http.authorizeHttpRequests(request -> request.requestMatchers("/user").hasRole("ADMIN"));
-        http.authorizeHttpRequests(request -> request.requestMatchers("/user").hasRole("USER"));
+        http.authorizeHttpRequests(request -> request.requestMatchers("/user").hasAnyRole("ADMIN", "USER"));
         http.authorizeHttpRequests(requests -> requests.requestMatchers(PathRequest.toH2Console()).permitAll());
         http.authorizeHttpRequests(requests -> requests.anyRequest().authenticated());
         http.formLogin(login -> login.loginPage("/login").permitAll().defaultSuccessUrl("/band/homepage", true));
         http.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout", "GET")).logoutSuccessUrl("/");
         http.csrf(csrf -> csrf.ignoringRequestMatchers(PathRequest.toH2Console()));
         http.headers().frameOptions().sameOrigin();
-        http.csrf().disable();
         return http.build();
     }
 

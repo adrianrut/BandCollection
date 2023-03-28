@@ -7,7 +7,8 @@ import java.time.LocalDate;
 import java.util.Set;
 
 @Entity
-public class Users {
+@Table(name="Users")
+public class ApplicationUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -9,14 +9,14 @@ public class UserRole {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
-    Users users;
+    ApplicationUser users;
     @Enumerated(EnumType.STRING)
     private Role role;
 
     public UserRole() {
     }
 
-    public UserRole(Users users, Role role) {
+    public UserRole(ApplicationUser users, Role role) {
         this.users = users;
         this.role = role;
     }
@@ -29,11 +29,11 @@ public class UserRole {
         this.id = id;
     }
 
-    public Users getUsers() {
+    public ApplicationUser getUsers() {
         return users;
     }
 
-    public void setUsers(Users users) {
+    public void setUsers(ApplicationUser users) {
         this.users = users;
     }
 

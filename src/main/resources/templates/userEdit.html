@@ -15,8 +15,6 @@
     <a href="/band/homepage">Powrót do strony głównej</a><br><br>
     <form method="post" th:object="${user}" th:action="@{/user-panel/{id}(id=${user.id})}">
         <input type="hidden" th:name="${user.email}">
-        <input type="hidden" th:name="${roles}">
-<!--        <input type="hidden" th:each="roles : ${user.userRole}" th:name="${roles.role}">-->
         <table class="table table-dark table-striped">
             <thead>
             <tr>
@@ -50,7 +48,7 @@
                     <input name="dateOfBirth" th:value="*{dateOfBirth}" type="date">
                 </label></td>
                 <td><label>
-                    <input name="email" th:value="*{password}" type="password">
+                    <input name="password" th:value="*{password}" type="password">
                 </label></td>
                 <td>
                     <div class="form-check">

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.rutkowski.bandcollection.user.RoleDto;
 import pl.rutkowski.bandcollection.user.UserService;
-import pl.rutkowski.bandcollection.user.Users;
+import pl.rutkowski.bandcollection.user.ApplicationUser;
 
 import java.util.List;
 import java.util.Optional;
@@ -25,7 +25,7 @@ public class AdminController {
 
     @GetMapping("")
     public String adminPanel(Model model) {
-        List<Users> users1 = userService.findAllWithoutCurrentUser();
+        List<ApplicationUser> users1 = userService.findAllWithoutCurrentUser();
         model.addAttribute("users", users1);
         return "admin";
     }
@@ -38,9 +38,9 @@ public class AdminController {
 
     @GetMapping("/edit-user/{id}")
     public String editUser(@PathVariable Long id, Model model) {
-        Optional<Users> usersOptional = userService.findById(id);
+        Optional<ApplicationUser> usersOptional = userService.findById(id);
         if (usersOptional.isPresent()) {
-            Users users = usersOptional.get();
+            ApplicationUser users = usersOptional.get();
             RoleDto roleDto = new RoleDto(users);
             users.getUserRole().forEach(role -> roleDto.getRoles().add(role.getRole()));
             model.addAttribute("roleDto", roleDto);

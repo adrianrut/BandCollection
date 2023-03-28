@@ -24,12 +24,12 @@ public class UserService {
         this.userRoleRepository = userRoleRepository;
     }
 
-    public List<Users> getUsers() {
+    public List<ApplicationUser> getUsers() {
         return  userRepository.findAll();
     }
 
     public void addUser(UserDto userDto) {
-        Users users = new Users();
+        ApplicationUser users = new ApplicationUser();
         users.setFirstName(userDto.getFirstName());
         users.setLastName(userDto.getLastName());
         users.setDateOfBirth(userDto.getDateOfBirth());
@@ -42,7 +42,7 @@ public class UserService {
         userRepository.save(users);
     }
 
-    public List<Users> findAllWithoutCurrentUser() {
+    public List<ApplicationUser> findAllWithoutCurrentUser() {
         Authentication currentUser = SecurityContextHolder.getContext().getAuthentication();
         return userRepository.findAll()
                 .stream()
@@ -53,8 +53,8 @@ public class UserService {
     public Long findUserId() {
         Authentication currentUser = SecurityContextHolder.getContext().getAuthentication();
         String userName = currentUser.getName();
-        List<Users> all = userRepository.findAll();
-        for (Users users : all) {
+        List<ApplicationUser> all = userRepository.findAll();
+        for (ApplicationUser users : all) {
             if (Objects.equals(users.getEmail(), userName)) {
                 return users.getId();
             }
@@ -62,7 +62,7 @@ public class UserService {
         return null;
     }
 
-    public Optional<Users> findById(Long id) {
+    public Optional<ApplicationUser> findById(Long id) {
         return userRepository.findById(id);
     }
 
@@ -70,7 +70,7 @@ public class UserService {
     @Transactional
     public void updateUserRole(Long id, RoleDto roleDto) {
         userRoleRepository.deleteUserRoleByUsersId(id);
-        Users userToUpdate = userRepository.findById(id).orElseThrow();
+        ApplicationUser userToUpdate = userRepository.findById(id).orElseThrow();
         Set<UserRole> roles = roleDto.getRoles().stream()
                 .map(role -> new UserRole(userToUpdate, role))
                 .collect(Collectors.toSet());
@@ -78,17 +78,14 @@ public class UserService {
         userRoleRepository.saveAll(userToUpdate.getUserRole());
     }
 
-    public void updateUser(Long id, Users users) {
-        Users userToUpdate = userRepository.findById(id).orElseThrow();
-        userToUpdate.setFirstName(users.getFirstName());
-        userToUpdate.setLastName(users.getLastName());
-        userToUpdate.setNewsletter(users.isNewsletter());
-        userToUpdate.setDateOfBirth(users.getDateOfBirth());
-        userToUpdate.setPassword(users.getPassword());
+    public void updateUser(Long id, UserDto userDto) {
+        ApplicationUser userToUpdate = userRepository.findById(id).orElseThrow();
+        userToUpdate.setFirstName(userDto.getFirstName());
+        userToUpdate.setLastName(userDto.getLastName());
+        userToUpdate.setNewsletter(userDto.isNewsletter());
+        userToUpdate.setDateOfBirth(userDto.getDateOfBirth());
+        userToUpdate.setPassword(userDto.getPassword());
         userRepository.save(userToUpdate);
     }
-
-    public List<UserRole> findRoleByUserId(Long id) {
-        return userRoleRepository.findRoleByUsersId(id);
-    }
+    
 }

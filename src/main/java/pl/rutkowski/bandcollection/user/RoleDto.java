@@ -5,13 +5,13 @@ import java.util.Set;
 
 public class RoleDto {
     private long id;
-    Set<Role> roles = new HashSet<>();
-    private Users user;
+    private Set<Role> roles = new HashSet<>();
+    private ApplicationUser user;
 
     public RoleDto() {
     }
 
-    public RoleDto(Users user) {
+    public RoleDto(ApplicationUser user) {
         this.id = user.getId();
         this.user = user;
     }
@@ -32,11 +32,11 @@ public class RoleDto {
         this.roles = roles;
     }
 
-    public void setUser(Users user) {
+    public void setUser(ApplicationUser user) {
         this.user = user;
     }
 
-    public Users getUser() {
+    public ApplicationUser getUser() {
         return user;
     }
 }

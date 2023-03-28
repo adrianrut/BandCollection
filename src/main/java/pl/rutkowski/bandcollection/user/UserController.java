@@ -19,7 +19,7 @@ public class UserController {
 
     @GetMapping("/user")
     public String getUsers(Model model) {
-        List<Users> users = userService.getUsers();
+        List<ApplicationUser> users = userService.getUsers();
         model.addAttribute("users", users);
         return "user";
     }
@@ -39,16 +39,14 @@ public class UserController {
 
     @GetMapping("/user-panel/{id}")
     public String editUser(@PathVariable Long id, Model model) {
-        Users users = userService.findById(id).orElseThrow();
-        List<UserRole> userRoles = userService.findRoleByUserId(id);
-        model.addAttribute("roles", userRoles);
+        ApplicationUser users = userService.findById(id).orElseThrow();
         model.addAttribute("user", users);
         return "userEdit";
     }
 
     @PostMapping("/user-panel/{id}")
-    public String updateUser(@PathVariable Long id, Users user) {
-        userService.updateUser(id, user);
+    public String updateUser(@PathVariable Long id, UserDto userDto) {
+        userService.updateUser(id, userDto);
         return "redirect:/band/homepage";
     }
 }

@@ -1,16 +1,40 @@
 package pl.rutkowski.bandcollection.user;
 
+import jakarta.validation.constraints.*;
+
 import java.time.LocalDate;
 
 public class UserDto {
+    private Long id;
+    @NotBlank
+    @Size(min = 3, max = 100)
     private String firstName;
+    @NotBlank
+    @Size(min = 3, max = 100)
     private String lastName;
+    @Past
     private LocalDate dateOfBirth;
+    @NotBlank
+    @Email
+    @Size(min = 5, max = 100)
     private String email;
+    @NotBlank
+    @Size(min = 8, max = 100, message = "Hasło musi posiadać min. 8 znaków")
+    @Pattern.List({
+            @Pattern(regexp = "(?=.*[a-z]).+", message = "Hasło musi posiadać min. jedną małą literę"),
+            @Pattern(regexp = "(?=.*[A-Z]).+", message = "Hasło musi posiadać min. jedną dużą literę"),
+            @Pattern(regexp = "(?=.*[!@#$%^&*+=?-_()/\"\\.,<>~`;:]).+", message = "Hasło musi posiadać min. jeden znak specjalny"),
+            })
     private String password;
     private boolean newsletter;
-    private String role;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -58,13 +82,5 @@ public class UserDto {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
     }
 }

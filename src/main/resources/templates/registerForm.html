@@ -15,18 +15,21 @@
     <form class="row g-3 needs-validation" action="#" method="post" th:action="@{/register}" th:object="${userDto}">
         <div class="col-md-4">
             <label for="validationCustom01" class="form-label" style="color: white">Imię</label>
-            <input type="text" th:field="*{firstName}" class="form-control" id="validationCustom01">
-
+            <input type="text" th:field="*{firstName}" class="form-control" id="validationCustom01" required>
+            <p th:errors="*{firstName}" class="error">Errors of someObjectField</p>
+            <p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="error">Nazwa nie może być pusta!</p>
         </div>
         <div class="col-md-4">
             <label for="validationCustom02" class="form-label" style="color: white">Nazwisko</label>
-            <input type="text" class="form-control" th:field="*{lastName}" id="validationCustom02">
-
+            <input type="text" class="form-control" th:field="*{lastName}" id="validationCustom02" required>
+            <p th:errors="*{lastName}" class="error">Errors of someObjectField</p>
         </div>
         <div>
             <label>
                 <span style="color: white">Data urodzenia</span>
-                <input type="date" th:field="*{dateOfBirth}">
+                <input type="date" th:field="*{dateOfBirth}" required>
+                <p th:errors="*{dateOfBirth}" class="error">Errors of someObjectField</p>
+
             </label>
         </div>
         <div class="col-md-4">
@@ -34,11 +37,13 @@
             <div class="input-group has-validation">
                 <span class="input-group-text" id="inputGroupPrepend">@</span>
                 <input type="text" class="form-control" th:field="*{email}" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+                <p th:errors="*{email}" class="error">Errors of someObjectField</p>
             </div>
         </div>
         <div class="col-md-6">
             <label for="validationCustom03" class="form-label" style="color: white">Hasło</label>
             <input type="password" th:field="*{password}" class="form-control" id="validationCustom03" required>
+            <p th:errors="*{password}" class="error">Errors of someObjectField</p>
         </div>
         <div class="col-12">
             <div class="form-check">
